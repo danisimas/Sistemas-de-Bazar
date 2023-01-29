@@ -1,5 +1,4 @@
 import tkinter as tk
-from subprocess import run
 
 
 window = tk.Tk()
