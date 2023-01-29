@@ -1,36 +1,19 @@
 
-import pandas as pd
 
-data = pd.read_csv("dados.csv").to_dict('records')
+import tkinter as tk
 
-text = {
-    'Nome': 'Teste',
-    'Estande': 'Teste',
-    'Nota_Atendimento':2.0,
-    'Nota_Organizacao': 1.0,
-    'Nota_Aparencia': 2.0,
-    'Nota_Variedade': 2.0,
-    'Nota_Forma_Pagamento': 2.0
-}
+window = tk.Tk()
 
+window.title("UFINDS")
+window.geometry("775x519")
+window.resizable(False, False)
 
-def dist_eucli(usuario1, usuario2):
-    dist = 0
-    dist = pow(usuario1['Nota_Atendimento'] - usuario2['Nota_Atendimento'], 2)
-    dist += pow(usuario1['Nota_Organizacao'] - usuario2['Nota_Organizacao'], 2)
-    dist += pow(usuario1['Nota_Aparencia'] - usuario2['Nota_Aparencia'], 2)
-    dist += pow(usuario1['Nota_Variedade'] - usuario2['Nota_Variedade'], 2)
-    dist += pow(usuario1['Nota_Forma_Pagamento'] - usuario2['Nota_Forma_Pagamento'], 2)
-    return dist**0.5
+imageBackground = tk.PhotoImage(file="./assets/entrar.png")
+iB= tk.Label(window, image=imageBackground)
+iB.place(x=0,y=0)
 
+imageButton = tk.PhotoImage(file="./assets/botaoEntrar.png")
+iButton = tk.Button(window, image=imageButton, bd=0, bg='#FFFFFF', activebackground='#FFFFFF')
+iButton.place(x=150,y=350)
 
-def vizinho_proximo(data, resposta, k):
-    vizinhos = []
-    for bazar in data:
-        vizinhos.append((bazar, dist_eucli(bazar, resposta)))
-    vizinhos.sort(key=lambda tup: tup[1])
-    topo = vizinhos[0:k]
-    return topo
-
-
-print(vizinho_proximo(data, text, 1))
+window.mainloop()
