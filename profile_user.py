@@ -1,19 +1,11 @@
 import tkinter as tk
-user = "Daniele"
-name ="......."
-password = "************"
+
 
 profile = tk.Tk()
 profile.title("Profile")
 profile.geometry("775x519")
 profile.resizable(False, False)
 profile.iconbitmap("./assets/market.ico")
-
-photo = tk.PhotoImage(file="./assets/profile.png")
-photo = photo.subsample(2)
-lbl = tk.Label(profile,image = photo)
-lbl.image = photo
-lbl.pack()
 
 username_label = tk.Label(profile, text="Username: {}".format(user))
 username_label.pack()

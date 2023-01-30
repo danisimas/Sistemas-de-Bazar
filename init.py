@@ -14,7 +14,7 @@ iB.place(x=0,y=0)
 
 def new_window():
     window.destroy()
-    import project
+    import login
 
 imageButton = tk.PhotoImage(file="./assets/botaoEntrar.png")
 iButton = tk.Button(window, image=imageButton, bd=0, bg='#FFFFFF', activebackground='#FFFFFF', command=new_window)
