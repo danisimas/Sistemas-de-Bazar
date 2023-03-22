@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/styles.css') }}"
+    />
+    <title>UFINDS - Bazares</title>
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <img
+          src="{{ url_for('static', filename='img/background.png') }}"
+          alt="UFINDS logo"
+        />
+      </div>
+      <nav>
+        <ul>
+          <li>Inicio</li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <button onclick="location.href='{{ url_for('login')}}'">Login</button>
+        <button onclick="location.href='{{ url_for('registerPage') }}'">Register</button>
+        
+      </div>
+    </header>
+    <main>
+      <section id="destaques">
+        <h2>Destaques</h2>
+        <ul>
+          <li>
+            <img
+              src="{{ url_for('static', filename='img/produto1.png') }}"
+              alt="Produto 1"
+            />
+            <h3>Produto 1</h3>
+            <p>Descrição do produto 1</p>
+          </li>
+          <li>
+            <img
+              src="{{ url_for('static', filename='img/produto2.png') }}"
+              alt="Produto 2"
+            />
+            <h3>Produto 2</h3>
+            <p>Descrição do produto 2</p>
+          </li>
+          <li>
+            <img
+              src="{{ url_for('static', filename='img/produto3.png') }}"
+              alt="Produto 3"
+            />
+            <h3>Produto 3</h3>
+            <p>Descrição do produto 3</p>
+          </li>
+        </ul>
+      </section>
+    </main>
+    <footer>
+      <p>Todos os direitos reservados - UFINDS 2023</p>
+    </footer>
+  </body>
+</html>

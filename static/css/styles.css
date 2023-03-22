@@ -1,0 +1,134 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+}
+
+.logo img {
+  height: 50px;
+}
+
+nav {
+  display: flex;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  padding: 0 20px;
+  font-size: 18px;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+}
+
+.header-actions button {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  margin: 0 10px;
+  cursor: pointer;
+}
+
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - 140px);
+}
+
+section#destaques {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f2f2f2;
+  padding: 50px;
+  text-align: center;
+}
+
+section#destaques h2 {
+  font-size: 36px;
+  margin-bottom: 50px;
+}
+
+section#destaques ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+
+section#destaques li {
+  width: 300px;
+  margin: 20px;
+  text-align: left;
+}
+
+section#destaques img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+footer {
+  background-color: #333;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px 0;
+  width: 100%;
+  font-size: 14px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f2f2f2;
+    padding: 50px;
+    height: 100vh;
+  }
+  
+  form p {
+    margin-bottom: 10px;
+    font-size: 18px;
+  }
+  
+  input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+  }
+  
+  input[type="submit"] {
+    background-color: #a62472;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+  
+
