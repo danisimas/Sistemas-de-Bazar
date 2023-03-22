@@ -2,7 +2,7 @@ import random
 import csv
 import requests
 from faker import Faker
-import pycep_correios
+import json 
 
 fake = Faker()
 
@@ -22,12 +22,18 @@ def generate_valid_postcode(ceps_list):
     while not valid_postcode:
         random_postcode = get_random_cep_from_list(ceps_list)
         response = requests.get(f'https://brasilapi.com.br/api/cep/v2/{random_postcode}')
-        response_data = response.json()
+        
+        try:
+            response_data = response.json()
+        except json.JSONDecodeError:
+            continue  # Skip the current iteration and try again with another random postcode
+
         if response.status_code == 200:
             print(response_data)
             valid_postcode = random_postcode
 
     return valid_postcode
+
 
 ceps_list = read_ceps_from_csv('ceps - ceps.csv')
 
@@ -36,9 +42,10 @@ def get_lat_lng_by_cep(cep):
     try:
         response = requests.get(f'https://brasilapi.com.br/api/cep/v2/{cep}')
         data = response.json()
-        return data['latitude'], data['longitude']
+        return data['location']['coordinates']['latitude'], data['location']['coordinates']['longitude']
     except:
         return '?', '?'
+
 
 def get_address_by_cep(cep):
     try:
@@ -48,17 +55,22 @@ def get_address_by_cep(cep):
     except:
         return "CEP não encontrado na base dos Correios"
 
+def write_csv_row(writer, name, cep, lat, lon, address, product_list=None):
+    if product_list is not None:
+        writer.writerow([name, cep, lat, lon, address, product_list])
+    else:
+        writer.writerow([name, cep, lat, lon, address])
+
 # Create CSV file for Users
 unique_cep_users = set()
 with open('usuarios.csv', mode='w', newline='', encoding='utf-8') as usuarios_file:
     usuarios_writer = csv.writer(usuarios_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
     usuarios_writer.writerow(['Nome Usuário', 'CEP Usuário', 'Latitude', 'Longitude', 'Endereço'])
 
-    for i in range(10):
-        # Generate a random username with Faker
+    for i in range(500):
         nome_usuario = fake.name()
-
         cep_usuario = generate_valid_postcode(ceps_list)
+
         while cep_usuario in unique_cep_users:
             cep_usuario = generate_valid_postcode(ceps_list)
         unique_cep_users.add(cep_usuario)
@@ -66,7 +78,8 @@ with open('usuarios.csv', mode='w', newline='', encoding='utf-8') as usuarios_fi
         lat_usuario, lon_usuario = get_lat_lng_by_cep(cep_usuario)
         endereco_usuario = get_address_by_cep(cep_usuario)
 
-        usuarios_writer.writerow([nome_usuario, cep_usuario, lat_usuario, lon_usuario, endereco_usuario])
+        write_csv_row(usuarios_writer, nome_usuario, cep_usuario, lat_usuario, lon_usuario, endereco_usuario)
+
 
 # Auxiliary functions
 def generate_random_product_name():
@@ -83,17 +96,13 @@ with open('bazares.csv', mode='w', newline='', encoding='utf-8') as bazares_file
     bazares_writer = csv.writer(bazares_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
     bazares_writer.writerow(['Nome Bazar', 'CEP Bazar', 'Latitude', 'Longitude', 'Endereço', 'Lista de Produtos'])
 
-    for i in range(500):
-        # Generate a random bazaar name with Faker
+    for i in range(50):
         nome_bazar = fake.company()
-
-        # Generate a random postcode with Faker
         cep_bazar = generate_valid_postcode(ceps_list)
 
         lat_bazar, lon_bazar = get_lat_lng_by_cep(cep_bazar)
         endereco_bazar = get_address_by_cep(cep_bazar)
 
-        # Generate a random list of products with Faker
         lista_produtos = ', '.join([f"{random.choice(categorias)}: {generate_random_product_name()} (Quantidade: {random.randint(1, 20)})" for _ in range(random.randint(3, 6))])
 
-        bazares_writer.writerow([nome_bazar, cep_bazar, lat_bazar, lon_bazar, endereco_bazar, lista_produtos])
+        write_csv_row(bazares_writer, nome_bazar, cep_bazar, lat_bazar, lon_bazar, endereco_bazar, lista_produtos)
