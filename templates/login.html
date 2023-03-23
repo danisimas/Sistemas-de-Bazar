@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/login.css') }}"
+    />
+    <title>UFinds - Login</title>
+  </head>
+  <body class="bodyColor">
+    <header>
+      <div class="header-container">
+        <button class="back-button" onclick="window.history.back()">
+          Voltar
+        </button>
+        <h1>Ufinds - Login</h1>
+      </div>
+    </header>
+    {% with messages = get_flashed_messages(with_categories=true) %} {% if
+    messages %}
+    <ul class="flashes" id="flash-messages">
+      {% for category, message in messages %}
+      <li class="{{ category }}">{{ message }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %} {% endwith %}
+    <form action="http://localhost:5000/login" method="post">
+      <p>Username:</p>
+      <p><input type="text" name="username" /></p>
+      <p>Password:</p>
+      <p><input type="password" name="password" /></p>
+      <p><input type="submit" value="Submit" /></p>
+      <p>
+        <a
+          href="#"
+          class="buttonRegistrar"
+          onclick="window.location.href='/register'"
+          >Criar conta</a
+        >
+      </p>
+    </form>
+    <script>
+      // Função para limpar os campos do formulário
+      function clearFormFields() {
+        const form = document.querySelector("form");
+        form.reset();
+      }
+
+      const flashMessages = document.querySelectorAll(".flashes li");
+      flashMessages.forEach((message) => {
+        setTimeout(() => {
+          message.classList.add("hidden");
+        }, 2000);
+
+        if (message.classList.contains("success")) {
+          setTimeout(() => {
+            window.location.href = "/"; // Modificado para redirecionar para a página de índice
+            clearFormFields(); // Limpar os campos do formulário antes de redirecionar
+          }, 2000);
+        }
+      });
+
+      // Adicionar um ouvinte de eventos para limpar os campos do formulário quando o botão Voltar for clicado
+      const backButton = document.querySelector(".back-button");
+      backButton.addEventListener("click", clearFormFields);
+    </script>
+  </body>
+</html>

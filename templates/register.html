@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/register.css') }}"
+    />
+    <title>UFinds - Registro</title>
+  </head>
+  <body class="backImage">
+    <div class="container">
+      <header>
+        <div id="header-content">
+          <button class="back-button" onclick="window.history.back()">
+            Voltar
+          </button>
+          <h1>UFinds - Registro</h1>
+        </div>
+      </header>
+      {% with messages = get_flashed_messages() %} {% if messages %}
+      <ul class="flashes">
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %} {% endwith %}
+      <form action="{{ url_for('register_user') }}" method="post">
+        <p>Nome:</p>
+        <p><input type="text" name="first_name" required /></p>
+        <p>Sobrenome:</p>
+        <p><input type="text" name="last_name" required /></p>
+        <p>CEP:</p>
+        <p><input type="text" name="cep" required /></p>
+        <p>Username:</p>
+        <p><input type="text" name="username" required /></p>
+        <p>Senha:</p>
+        <p><input type="password" name="password" required /></p>
+        <p>Confirmar Senha:</p>
+        <p><input type="password" name="confirm_password" required /></p>
+        <p><input type="submit" value="Registrar" /></p>
+      </form>
+    </div>
+    <script>
+      const flashMessages = document.querySelectorAll(".flashes li");
+      flashMessages.forEach((message) => {
+        setTimeout(() => {
+          message.classList.add("hidden");
+        }, 2000);
+
+        // Verificar se a mensagem é de sucesso e redirecionar para a página de login
+        if (message.textContent.includes("Registro concluído com sucesso.")) {
+          setTimeout(() => {
+            window.location.href = "/login";
+          }, 2000);
+        }
+      });
+    </script>
+  </body>
+</html>
