@@ -1,4 +1,4 @@
-* {
+*{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -68,6 +68,7 @@ form p {
   font-size: 14px;
   font-weight: bold;
   margin-bottom: 5px;
+  display: flex;
 }
 
 form input[type="text"],
@@ -122,4 +123,19 @@ ul.flashes li {
 p{
 
   color: #ffffff;
+  display: flex;
+}
+
+.buttonRegistrar {
+  text-decoration: none;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  padding-top: 5%;
+}
+
+.buttonRegistrar:hover {
+  text-decoration: underline;
 }
