@@ -1,129 +1,105 @@
-/* ufinds_modal.css */
-
 body {
   font-family: Arial, sans-serif;
-  background-color: #f0f0f0;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
 }
 
 header {
+  background-color: #012f1c;
+  color: white;
   display: flex;
   justify-content: space-between;
-  align-items: center;
   padding: 1rem;
-  background-color: #232f3e;
-  color: white;
 }
 
-form {
+.header-left {
   display: flex;
+  flex-direction: column;
 }
 
-input,
-button {
-  padding: 0.5rem;
-  margin-left: 0.5rem;
+.header-right form {
+  display: flex;
+  align-items: center;
+}
+
+header h2 {
+  margin: 0;
+}
+
+header p {
+  margin: 0;
 }
 
 input[type="text"] {
-  width: 300px;
+  padding: 0.4rem;
+  margin-right: 0.4rem;
+}
+
+button {
+  background-color: #1d201d;
+  border: none;
+  color: white;
+  padding: 0.4rem;
+  margin-right: 0.4rem;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border-radius: 2%;
+}
+
+button:hover {
+  background-color: #e306c9;
+}
+
+main {
+  padding: 1rem;
 }
 
 table {
   width: 100%;
-  max-width: 1200px;
   border-collapse: collapse;
-  margin: 2rem auto;
-  background-color: white;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-th,
-td {
-  padding: 1rem;
+table, th, td {
+  border: 1px solid #ddd;
+}
+
+th, td {
+  padding: 0.8rem;
   text-align: left;
-  border-bottom: 1px solid #ddd;
 }
 
 th {
-  background-color: #f6f6f6;
-  font-weight: bold;
+  background-color: #f2f2f2;
 }
 
-h2 {
-  text-align: center;
-  margin-bottom: 1rem;
+tr:nth-child(even) {
+  background-color: #f2f2f2;
 }
 
-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20px;
-  background-color: #012f1c;
-  color: #ffffff;
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+  }
+
+  .header-right {
+    margin-top: 1rem;
+  }
+
+  .header-right form {
+    flex-wrap: wrap;
+  }
+
+  input[type="text"] {
+    width: 100%;
+    margin-bottom: 0.4rem;
+  }
+
+  button[type="button"] {
+    margin-bottom: 0.4rem;
+  }
 }
-
-.header-left h2 {
-  margin: 0;
-  font-size: 36px;
-}
-
-.header-left p {
-  margin: 0;
-  font-size: 24px;
-}
-
-input[type="text"] {
-  padding: 10px;
-  font-size: 18px;
-  border: none;
-  border-radius: 10px 0 0 10px;
-  margin-right: 10px;
-}
-
-button[type="submit"] {
-  padding: 10px 20px;
-  background-color: #333;
-  color: #fff;
-  border: none;
-  border-radius: 0 10px 10px 0;
-  cursor: pointer;
-  font-size: 18px;
-}
-
-button[type="submit"]:hover {
-  background-color: #e306c9;
-}
-
-.buttonLimpar{
-  padding: 10px 20px;
-  background-color: #333;
-  color: #fff;
-  border: none;
-  border-radius: 0 10px 10px 0;
-  cursor: pointer;
-  font-size: 18px;
-
-}
-
-.buttonLimpar:hover {
-
-    background-color: #e306c9;
-
-}
-.ufinds-background {
-  background-color: black;
-}
-.recommendation-title {
-  background-color: #1a1a1a; /* Cor mais clara para o efeito hover */
-  color: #e306c9; /* Cor rosa */
-  display: inline-block;
-  padding: 5px 10px;
-}
-
-
-.centered-text {
-  text-align: center;
-  width: 100%;
-}
-

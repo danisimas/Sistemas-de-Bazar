@@ -26,7 +26,7 @@
       }
     </script>
   </head>
-  <body class="ufinds-background">
+  <body>
     <header>
       <div class="header-left">
         <h2>Bem-vindo(a), {{ first_name }} {{ last_name }}</h2>
@@ -41,25 +41,16 @@
             placeholder="Pesquisar"
           />
           <button type="submit">Pesquisar</button>
-          <button class="buttonLimpar" type="button" onclick="clearSearch()">
-            Limpar pesquisa
-          </button>
+          <button type="button" onclick="clearSearch()">Limpar pesquisa</button>
         </form>
       </div>
     </header>
     <main>
-      {% if search_applied %}
-      <div class="centered-text">
-        <h2 class="recommendation-title">
-          Recomendações de bazares próximos baseadas na palavra pesquisada
-        </h2>
-      </div>
+      {% set show_products = search_applied %} {% if search_applied %}
+      <h2>Recomendações de bazares próximos baseadas na palavra pesquisada</h2>
       {% else %}
-      <div class="centered-text">
-        <h2 class="recommendation-title">Recomendações de bazares próximos</h2>
-      </div>
+      <h2>Recomendações de bazares próximos</h2>
       {% endif %}
-
       <table>
         <thead>
           <tr>
