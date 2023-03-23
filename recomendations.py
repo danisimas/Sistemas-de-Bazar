@@ -18,9 +18,15 @@ def recomendar_itens(latitude, longitude):
 
     return df.head(20)
 
-def max_similarity(product_list, target_word):
+def extract_product_words(product_list):
     products = product_list.split(", ")
-    similarities = [fuzz.token_sort_ratio(target_word, product) for product in products]
+    product_words = [product.split(" ")[1:] for product in products]
+    flattened_words = [word for sublist in product_words for word in sublist]
+    return flattened_words
+
+def max_similarity(product_list, target_word):
+    product_words = extract_product_words(product_list)
+    similarities = [fuzz.token_sort_ratio(target_word, word) for word in product_words]
     return max(similarities)
 
 def recomendar_itens_com_palavra(latitude, longitude, palavra):
@@ -37,6 +43,6 @@ def recomendar_itens_com_palavra(latitude, longitude, palavra):
     df['distancia'] = df.apply(lambda row: distance.distance(user_location, (row['Latitude'], row['Longitude'])).m, axis=1)
     df['similaridade'] = df['Lista de Produtos'].apply(lambda x: max_similarity(x, palavra))
     df['score'] = (1 - df['distancia'] / df['distancia'].max()) * 0.25 + df['similaridade'] / 100 * 0.75
-    df.sort_values(by='score', ascending=False, inplace=True)
+    df.sort_values(by=['score', 'similaridade'], ascending=[False, False], inplace=True)
     print(df['score'])
     return df.head(20)
