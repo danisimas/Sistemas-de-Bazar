@@ -1,6 +1,8 @@
 from flask import Flask, render_template, url_for, request, redirect, flash, session
 import requests
 import time
+from recomendations import recomendar_itens
+
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'
@@ -28,7 +30,7 @@ def is_valid_cep(cep):
         return {
             "cep": cep_info["cep"],
             "latitude": cep_info['location']['coordinates']['latitude'],
-            "longitude": cep_info['location']['coordinates']['longitude']["longitude"]
+            "longitude": cep_info['location']['coordinates']['longitude']
         }
 
 
@@ -81,11 +83,12 @@ def ufinds():
         return redirect('/login')
     username = session['username']
     user = registered_users.get(username)
+    bazares_recomendados = recomendar_itens(user["latitude"], user["longitude"])
     if not user:
         flash('Usuário não cadastrado.', 'error')
         return redirect('/login')
 
-    return render_template("ufinds.html", first_name=user["first_name"], last_name=user["last_name"], cep=user["cep"], latitude=user["latitude"], longitude=user["longitude"])
+    return render_template("ufinds.html", first_name=user["first_name"], last_name=user["last_name"], cep=user["cep"], latitude=user["latitude"], longitude=user["longitude"], bazares=bazares_recomendados)
 
 
 @app.route("/login", methods=['POST'])

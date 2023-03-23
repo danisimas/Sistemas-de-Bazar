@@ -20,5 +20,24 @@
             </form>
         </div>
     </header>
+    <main>
+        <h2>Recomendações de bazares próximos</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Endereço</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for _, bazar in bazares.iterrows() %}
+                <tr>
+                    <td>{{ bazar['Nome Bazar'] }}</td>
+                    <td>{{ bazar['Endereço'] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </main>
 </body>
 </html>

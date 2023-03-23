@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/ufinds.css') }}"
+    />
+    <title>Ufinds - Recomendações</title>
+  </head>
+  <body>
+    <header>
+      <div class="header-left">
+        <h2>Recomendações de bazares próximos</h2>
+      </div>
+    </header>
+    <main>
+      <table>
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Endereço</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for _, bazar in bazares.iterrows() %}
+          <tr>
+            <td>{{ bazar['Nome Bazar'] }}</td>
+            <td>{{ bazar['Endereço'] }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </main>
+  </body>
+</html>
