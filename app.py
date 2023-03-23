@@ -1,7 +1,7 @@
 from flask import Flask, render_template, url_for, request, redirect, flash, session
 import requests
 import time
-from recomendations import recomendar_itens
+from recomendations import recomendar_itens, recomendar_itens_com_palavra
 
 
 app = Flask(__name__)
@@ -76,19 +76,34 @@ def register_user():
 def loginPage():
     return render_template("login.html")
 
-@app.route("/ufinds")
+
+@app.route("/ufinds", methods=['GET', 'POST'])
 def ufinds():
     if 'username' not in session:
         flash('Usuário não cadastrado.', 'error')
         return redirect('/login')
     username = session['username']
     user = registered_users.get(username)
-    bazares_recomendados = recomendar_itens(user["latitude"], user["longitude"])
+
     if not user:
         flash('Usuário não cadastrado.', 'error')
         return redirect('/login')
 
-    return render_template("ufinds.html", first_name=user["first_name"], last_name=user["last_name"], cep=user["cep"], latitude=user["latitude"], longitude=user["longitude"], bazares=bazares_recomendados)
+    search_applied = False
+    search = None
+    if request.method == 'POST':
+        search = request.form.get("search")
+        if search:
+            search_applied = True
+            bazares_recomendados = recomendar_itens_com_palavra(user["latitude"], user["longitude"], search)
+        else:
+            search_applied = False
+            bazares_recomendados = recomendar_itens(user["latitude"], user["longitude"])
+    else:
+        bazares_recomendados = recomendar_itens(user["latitude"], user["longitude"])
+
+    return render_template("ufinds.html", first_name=user["first_name"], last_name=user["last_name"], cep=user["cep"], latitude=user["latitude"], longitude=user["longitude"], bazares=bazares_recomendados, search_applied=search_applied)
+
 
 
 @app.route("/login", methods=['POST'])

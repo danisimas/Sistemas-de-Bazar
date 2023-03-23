@@ -6,6 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/ufinds.css') }}">
     <title>Ufinds - Página principal</title>
+    <script>
+        function clearSearch() {
+            document.getElementById("search-input").value = "";
+            location.reload();
+        }
+    </script>
 </head>
 <body>
     <header>
@@ -14,19 +20,25 @@
             <p>CEP: {{ cep }}</p>
         </div>
         <div class="header-right">
-            <form>
-                <input type="text" placeholder="Pesquisar">
+            <form method="POST" action="{{ url_for('ufinds') }}">
+                <input type="text" id="search-input" name="search" placeholder="Pesquisar">
                 <button type="submit">Pesquisar</button>
+                <button type="button" onclick="clearSearch()">Limpar pesquisa</button>
             </form>
         </div>
     </header>
     <main>
-        <h2>Recomendações de bazares próximos</h2>
+        {% if search_applied %}
+            <h2>Recomendações de bazares próximos baseadas na palavra pesquisada</h2>
+            {% else %}
+                <h2>Recomendações de bazares próximos</h2>
+        {% endif %}
         <table>
             <thead>
                 <tr>
                     <th>Nome</th>
                     <th>Endereço</th>
+                    <th>Produtos</th>
                 </tr>
             </thead>
             <tbody>
@@ -34,6 +46,7 @@
                 <tr>
                     <td>{{ bazar['Nome Bazar'] }}</td>
                     <td>{{ bazar['Endereço'] }}</td>
+                    <td>{{ bazar['Lista de Produtos'] }}</td>
                 </tr>
                 {% endfor %}
             </tbody>
