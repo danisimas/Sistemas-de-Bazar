@@ -1,0 +1,8 @@
+name,description
+Vaso de cerâmica,"Vaso de cerâmica pintado à mão com estampa floral."
+Toalha de mesa,"Toalha de mesa retangular em tecido de algodão com estampa geométrica."
+Bolsa de couro,"Bolsa de couro marrom com alça removível e bolso interno."
+Cesto de vime,"Cesto de vime com tampa e alças laterais. Ideal para armazenar roupas ou objetos."
+Tapete de crochê,"Tapete de crochê redondo em tons de azul e branco. Feito à mão."
+Caneca de porcelana,"Caneca de porcelana branca com estampa de gato preto."
+Pufe de tricô,"Pufe de tricô cinza claro com enchimento de espuma. Ideal para descansar os pés."
