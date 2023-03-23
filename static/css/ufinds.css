@@ -111,3 +111,19 @@ button[type="submit"]:hover {
     background-color: #e306c9;
 
 }
+.ufinds-background {
+  background-color: black;
+}
+.recommendation-title {
+  background-color: #1a1a1a; /* Cor mais clara para o efeito hover */
+  color: #e306c9; /* Cor rosa */
+  display: inline-block;
+  padding: 5px 10px;
+}
+
+
+.centered-text {
+  text-align: center;
+  width: 100%;
+}
+

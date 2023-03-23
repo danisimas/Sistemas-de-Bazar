@@ -23,10 +23,11 @@ def registerPage():
 
 def is_valid_cep(cep):
     response = requests.get(f"https://brasilapi.com.br/api/cep/v2/{cep}")
-    if response.json().get("erro", False):
+    cep_info = response.json()
+    
+    if cep_info.get("erro", False) or "cep" not in cep_info:
         return None
     else:
-        cep_info = response.json()
         return {
             "cep": cep_info["cep"],
             "latitude": cep_info['location']['coordinates']['latitude'],
