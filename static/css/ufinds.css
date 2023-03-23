@@ -1,0 +1,45 @@
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #012f1c;
+    color: #ffffff;
+}
+
+.header-left h2 {
+    margin: 0;
+    font-size: 36px;
+}
+
+.header-left p {
+    margin: 0;
+    font-size: 24px;
+}
+
+form {
+    display: flex;
+    align-items: center;
+}
+
+input[type="text"] {
+    padding: 10px;
+    font-size: 18px;
+    border: none;
+    border-radius: 10px 0 0 10px;
+    margin-right: 10px;
+}
+
+button[type="submit"] {
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 0 10px 10px 0;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+button[type="submit"]:hover {
+    background-color: #e306c9;
+}

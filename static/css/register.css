@@ -1,0 +1,133 @@
+/* Estilos gerais */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+  padding-top: 70px;
+}
+
+form {
+    background-color: #e306c9;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 5px;
+    width: 300px;
+    margin-top: 100px; /* Adicione essa linha */
+}
+
+p {
+    margin: 0;
+    margin-bottom: 10px;
+    color: #ffffff;
+    font-size: medium;
+}
+
+/* Estilos de input */
+form input[type="text"],
+form input[type="password"] {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+/* Estilos de botões */
+form input[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 8px 16px;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #4a4a4a;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+form input[type="submit"]:hover {
+    background-color: #012f1c;
+}
+
+/* Estilos das mensagens flash */
+ul.flashes {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+/* Estilos do cabeçalho */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    background-color: #012f1c;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+  }
+
+#header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 100%;
+    width: 100%;
+}
+
+
+.back-button {
+    background-color: #4a4a4a;
+    color: #ffffff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-left: 20px;
+    border-radius: 5px;
+}
+
+.back-button:hover {
+    background-color: #e306c9;
+  }
+
+
+h1 {
+    text-align: center;
+    flex-grow: 1;
+    color: #ffffff
+}
+
+/* Outras partes do arquivo permanecem inalteradas */
+ul.flashes li {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    margin-bottom: 5px;
+    transition: opacity 0.5s;
+    list-style: none; /* Adicione transição para suavizar a mudança de opacidade */
+}
+
+.hidden {
+    opacity: 0 !important;
+}
+
+.backImage{
+  background-image: url("/static/img/backsite.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+

@@ -1,32 +1,24 @@
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='css/styles.css') }}"
-    />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
     <title>UFINDS - Bazares</title>
   </head>
   <body>
     <header>
       <div class="logo">
-        <img
-          src="{{ url_for('static', filename='img/background.png') }}"
-          alt="UFINDS logo"
-        />
+        <img src="{{ url_for('static', filename='img/background.png') }}" alt="UFINDS logo">
       </div>
       <nav>
         <ul>
-          <li>Inicio</li>
+          <li>PÁGINA PRINCIPAL</li>
         </ul>
       </nav>
       <div class="header-actions">
         <button onclick="location.href='{{ url_for('login')}}'">Login</button>
         <button onclick="location.href='{{ url_for('registerPage') }}'">Register</button>
-        
       </div>
     </header>
     <main>
@@ -34,28 +26,25 @@
         <h2>Destaques</h2>
         <ul>
           <li>
-            <img
-              src="{{ url_for('static', filename='img/produto1.png') }}"
-              alt="Produto 1"
-            />
-            <h3>Produto 1</h3>
-            <p>Descrição do produto 1</p>
+            <div class="img-container">
+              <img src="{{ url_for('static', filename='img/bolsaverde.png') }}" alt="Produto 1">
+            </div>
+            <h3>Bolsa Verde</h3>
+            <p>Bolsa bonita verde com alça</p>
           </li>
           <li>
-            <img
-              src="{{ url_for('static', filename='img/produto2.png') }}"
-              alt="Produto 2"
-            />
-            <h3>Produto 2</h3>
-            <p>Descrição do produto 2</p>
+            <div class="img-container">
+              <img src="{{ url_for('static', filename='img/panda_objeto.png') }}" alt="Produto 2">
+            </div>
+            <h3>Objeto abstrato</h3>
+            <p>Efeite de quarto azul com a pintura de um panda</p>
           </li>
           <li>
-            <img
-              src="{{ url_for('static', filename='img/produto3.png') }}"
-              alt="Produto 3"
-            />
-            <h3>Produto 3</h3>
-            <p>Descrição do produto 3</p>
+            <div class="img-container">
+              <img src="{{ url_for('static', filename='img/vaso.png') }}" alt="Produto 3">
+            </div>
+            <h3>Vaso</h3>
+            <p>Vaso rosa para porta treco</p>
           </li>
         </ul>
       </section>

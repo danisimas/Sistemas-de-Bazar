@@ -8,9 +8,13 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #333;
-  color: #fff;
+  background-color: #012f1c;
+  color: #ffffff;
   padding: 20px;
+  font-size: 100%;
+  position: fixed;
+  width: 100%;
+  top: 0;
 }
 
 .logo img {
@@ -26,18 +30,20 @@ nav ul {
   margin: 0;
   padding: 0;
   display: flex;
+  font-size: 80%;
 }
 
 nav a {
   color: #fff;
   text-decoration: none;
   padding: 0 20px;
-  font-size: 18px;
+  font-size: 40%;
 }
 
 .header-actions {
   display: flex;
   align-items: center;
+  font-size: medium;
 }
 
 .header-actions button {
@@ -47,13 +53,18 @@ nav a {
   padding: 10px 20px;
   margin: 0 10px;
   cursor: pointer;
+  border-radius: 10%;
+  font-size: medium;
+}
+
+.header-actions button:hover {
+  background-color: #e306c9;
 }
 
 main {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: calc(100vh - 140px);
+  padding: 70px;
+  margin-top: 70px;
+  margin-bottom: 70px;
 }
 
 section#destaques {
@@ -63,6 +74,8 @@ section#destaques {
   background-color: #f2f2f2;
   padding: 50px;
   text-align: center;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 section#destaques h2 {
@@ -75,6 +88,7 @@ section#destaques ul {
   flex-wrap: wrap;
   justify-content: center;
   margin-bottom: 50px;
+  list-style: none;
 }
 
 section#destaques li {
@@ -90,7 +104,7 @@ section#destaques img {
 }
 
 footer {
-  background-color: #333;
+  background-color: #012f1c;
   color: #fff;
   display: flex;
   justify-content: center;
@@ -98,37 +112,18 @@ footer {
   text-align: center;
   padding: 20px 0;
   width: 100%;
-  font-size: 14px;
+  font-size: smaller;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
 
-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #f2f2f2;
-    padding: 50px;
-    height: 100vh;
-  }
-  
-  form p {
-    margin-bottom: 10px;
-    font-size: 18px;
-  }
-  
-  input[type="text"], input[type="password"] {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-  }
-  
-  input[type="submit"] {
-    background-color: #a62472;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    margin-top: 20px;
-  }
-  
+li{
+  font-size: medium;
+}
 
+@media (max-width: 992px) {
+  section#destaques {
+    max-width: 90%;
+  }
+}
