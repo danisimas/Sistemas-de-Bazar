@@ -76,7 +76,6 @@ def register_user():
 def loginPage():
     return render_template("login.html")
 
-
 @app.route("/ufinds", methods=['GET', 'POST'])
 def ufinds():
     if 'username' not in session:
@@ -90,10 +89,17 @@ def ufinds():
         return redirect('/login')
 
     search_applied = False
+    reset_search = False
     search = None
+
     if request.method == 'POST':
         search = request.form.get("search")
-        if search:
+        reset_search = request.form.get("reset") == "true"
+
+        if reset_search:
+            search_applied = False
+            bazares_recomendados = recomendar_itens(user["latitude"], user["longitude"])
+        elif search:
             search_applied = True
             bazares_recomendados = recomendar_itens_com_palavra(user["latitude"], user["longitude"], search)
         else:
@@ -102,9 +108,9 @@ def ufinds():
     else:
         bazares_recomendados = recomendar_itens(user["latitude"], user["longitude"])
 
-    return render_template("ufinds.html", first_name=user["first_name"], last_name=user["last_name"], cep=user["cep"], latitude=user["latitude"], longitude=user["longitude"], bazares=bazares_recomendados, search_applied=search_applied)
+    show_products = not reset_search
 
-
+    return render_template("ufinds.html", first_name=user["first_name"], last_name=user["last_name"], cep=user["cep"], latitude=user["latitude"], longitude=user["longitude"], bazares=bazares_recomendados, search_applied=search_applied, show_products=show_products)
 
 @app.route("/login", methods=['POST'])
 def login():
